@@ -1,17 +1,12 @@
 // ///changes
 // import { Component } from 'react';
 import { useState, useEffect } from 'react';
-import ContactForm from './ContactForm/ContactForm';
-import Filter from './Filter/Filter';
-import ContactList from './ContactList/ContactList';
+import ContactForm from './ContactForm';
+import Filter from './Filter';
+import ContactList from './ContactList';
 import style from './App.module.css';
 
 export const App = () => {
-  // state = {
-  //   contacts: [],
-  //   filter: '',
-  // };
-
   // переробити
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
@@ -23,22 +18,9 @@ export const App = () => {
     }
   }, []);
 
-  // {
-  //   const storedContacts = localStorage.getItem('contacts');
-  //   if (storedContacts) {
-  //     this.setState({ contacts: JSON.parse(storedContacts) });
-  //   }
-  // }
-
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.contacts !== this.state.contacts) {
-  //     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-  //   }
-  // }
 
   const handleAddNewContact = newContact => {
     setContacts(prevContacts => [...prevContacts, newContact]);

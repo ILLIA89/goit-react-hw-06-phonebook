@@ -1,4 +1,4 @@
-import ContactItem from 'components/ContactItem/ContactItem';
+import ContactItem from 'components/ContactItem';
 import style from './ContactList.module.css';
 
 const ContactList = ({ visibleContacts, onDeleteContact }) => {
