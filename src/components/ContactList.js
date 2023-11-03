@@ -1,26 +1,14 @@
-import ContactItem from 'components/ContactItem';
-import style from './ContactList.module.css';
+import React from 'react';
 
-const ContactList = ({ visibleContacts, onDeleteContact }) => {
+export default function ContactList({ contacts, onDeleteContact }) {
   return (
-    <ul className={style.list}>
-      {visibleContacts.length !== 0 ? (
-        visibleContacts.map(({ id, name, number }) => {
-          return (
-            <ContactItem
-              key={id}
-              id={id}
-              name={name}
-              number={number}
-              onDeleteContact={onDeleteContact}
-            />
-          );
-        })
-      ) : (
-        <li className={style.error}>Not Found name</li>
-      )}
+    <ul>
+      {contacts.map(contact => (
+        <li key={contact.id}>
+          {contact.name}: {contact.number}
+          <button onClick={() => onDeleteContact(contact.id)}>Delete</button>
+        </li>
+      ))}
     </ul>
   );
-};
-
-export default ContactList;
+}

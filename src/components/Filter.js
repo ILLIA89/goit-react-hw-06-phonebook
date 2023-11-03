@@ -1,21 +1,16 @@
-import style from './Filter.module.css';
+import React from 'react';
 
-const Filter = ({ value, onChange }) => (
-  <div className={style.searchContainer}>
-    {' '}
-    <label className={style.search}>
-      <input
-        type="text"
-        name="filter"
-        placeholder=" "
-        className={style.inputName}
-        title="Enter search name"
-        onChange={onChange}
-        value={value}
-      />
-      <button type="reset"></button>
-    </label>
-  </div>
-);
+export default function Filter({ filter, onFilterChange }) {
+  const handleChange = e => {
+    onFilterChange(e.target.value);
+  };
 
-export default Filter;
+  return (
+    <input
+      type="text"
+      value={filter}
+      onChange={handleChange}
+      placeholder="Search contacts by name"
+    />
+  );
+}
